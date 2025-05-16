@@ -39,9 +39,9 @@ public class CursoController {
         return cursoService.getCursoActualizar(curso);
     }
 
-    @DeleteMapping("{rut}")
-    public String eliminarUsuario(@PathVariable int rut) {
-        return cursoService.deleteUsuario(rut);
+    @DeleteMapping("{idCurso}")
+    public String eliminarCurso (@PathVariable int idCurso) {
+        return cursoService.deleteCurso(idCurso);
     }
 
 }

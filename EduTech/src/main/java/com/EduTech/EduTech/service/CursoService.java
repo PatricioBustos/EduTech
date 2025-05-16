@@ -35,7 +35,7 @@ public class CursoService {
     }
 
 
-    public String deleteUsuario( int idCurso) {
+    public String deleteCurso( int idCurso) {
         cursorepository.eliminarCurso(idCurso);
         return "curso con id: "+ idCurso +"Eliminado correctamente";
     }
