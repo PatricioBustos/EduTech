@@ -2,7 +2,7 @@ package com.EduTech.EduTech.controller;
 
 import com.EduTech.EduTech.model.Curso;
 import com.EduTech.EduTech.service.CursoService;
-import org.apache.catalina.User;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,21 +25,21 @@ public class CursoController {
         return cursoService.saveCurso(curso);
     }
 
-    @GetMapping("{idCurso}")
+    @GetMapping("/idCurso/{idCurso}")
     public Curso buscarCursoId(@PathVariable int idCurso){
         return cursoService.getCursoId (idCurso);
     }
 
-    @GetMapping("{nombreCurso}")
+    @GetMapping("/nombreCurso/{nombreCurso}")
     public Curso buscarCursoNombre(@PathVariable String nombreCurso){ return cursoService.getCursoNombre(nombreCurso);
     }
 
-    @PutMapping("{idCurso}")
+    @PutMapping("/idCurso/{idCurso}")
     public Curso actualizarCurso(@PathVariable int idCurso, @RequestBody Curso curso) {
         return cursoService.getCursoActualizar(curso);
     }
 
-    @DeleteMapping("{idCurso}")
+    @DeleteMapping("/idCurso/{idCurso}")
     public String eliminarCurso (@PathVariable int idCurso) {
         return cursoService.deleteCurso(idCurso);
     }

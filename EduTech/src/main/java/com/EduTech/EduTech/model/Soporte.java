@@ -11,6 +11,6 @@ public class Soporte {
     private int idTicket;
     private Usuario usuario;
     private String tipoConsulta;
-
+    private String descripcionProblema;
 
 }
