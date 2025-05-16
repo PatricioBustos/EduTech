@@ -21,9 +21,14 @@ public class CursoService {
         return cursorepository.guardarCurso(curso);
     }
 
-    public Curso getCurso(int idCurso) {
+    public Curso getCursoId(int idCurso) {
         return cursorepository.buscarPorId(idCurso);
     }
+
+    public Curso getCursoNombre(String nombreCurso) {
+        return cursorepository.buscarPorNombre(nombreCurso);
+    }
+
 
     public Curso getCursoActualizar(Curso curso) {
         return cursorepository.actualizarCurso(curso);

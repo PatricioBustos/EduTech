@@ -26,18 +26,17 @@ public class CursoController {
     }
 
     @GetMapping("{idCurso}")
-    public Curso buscarCurso(@PathVariable int idCurso){
-        return cursoService.getCurso(idCurso);
+    public Curso buscarCursoId(@PathVariable int idCurso){
+        return cursoService.getCursoId (idCurso);
     }
 
-    @GetMapping("{correo}")
-    public Curso buscarUsuario(@PathVariable String correo){
-        return cursoService.getUsuarioCorreo(correo);
+    @GetMapping("{nombreCurso}")
+    public Curso buscarCursoNombre(@PathVariable String nombreCurso){ return cursoService.getCursoNombre(nombreCurso);
     }
 
-    @PutMapping("{rut}")
-    public Curso actualizarUsuario(@PathVariable int rut, @RequestBody Curso usuario) {
-        return cursoService.upadteUsuario(usuario);
+    @PutMapping("{idCurso}")
+    public Curso actualizarCurso(@PathVariable int idCurso, @RequestBody Curso curso) {
+        return cursoService.getCursoActualizar(curso);
     }
 
     @DeleteMapping("{rut}")

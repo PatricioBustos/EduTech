@@ -24,6 +24,15 @@ public class CursoRepository {
         }
         return null;
     }
+
+    public Curso buscarPorNombre(String nombreCurso) {
+        for ( Curso curso : listaCursos){
+            if (curso.getNombreCurso().equals(nombreCurso)){
+                return curso;
+            }
+        }
+        return null;
+    }
     
     public Curso guardarCurso(Curso clases){
         listaCursos.add(clases);
