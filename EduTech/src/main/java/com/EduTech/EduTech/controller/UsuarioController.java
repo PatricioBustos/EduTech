@@ -26,22 +26,23 @@ public class UsuarioController {
     }
 
     @GetMapping("/rut/{rut}")
-    public Usuario buscarUsuario(@PathVariable int rut){
+    public Usuario buscarUsuarioPorRut(@PathVariable String rut){
         return usuarioService.getUsuarioRut(rut);
     }
 
     @GetMapping("/correo/{correo}")
-    public Usuario buscarUsuario(@PathVariable String correo){
+    public Usuario buscarUsuarioPorCorreo(@PathVariable String correo){
         return usuarioService.getUsuarioCorreo(correo);
     }
 
     @PutMapping("/rut/{rut}")
-    public Usuario actualizarUsuario(@PathVariable int rut, @RequestBody Usuario usuario) {
-        return usuarioService.upadteUsuario(usuario);
+    public Usuario actualizarUsuario(@PathVariable String rut, @RequestBody Usuario usuario) {
+        return usuarioService.updateUsuario(usuario);
+
     }
 
     @DeleteMapping("/rut/{rut}")
-    public String eliminarUsuario(@PathVariable int rut) {
+    public String eliminarUsuario(@PathVariable String rut) {
         return usuarioService.deleteUsuario(rut);
     }
 

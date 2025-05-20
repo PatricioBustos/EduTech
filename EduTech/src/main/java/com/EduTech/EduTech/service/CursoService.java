@@ -18,6 +18,14 @@ public class CursoService {
     }
 
     public Curso saveCurso(Curso curso) {
+        if (curso.getNombreCurso() == null || curso.getNombreCurso().trim().isEmpty()) {
+            throw new IllegalArgumentException("El nombre del curso no debe estar vacío");
+        }
+
+        if (cursorepository.buscarPorId(curso.getIdCurso()) != null) {
+            throw new RuntimeException("El ID del curso ya existe, utiliza otro!!");
+        }
+
         return cursorepository.guardarCurso(curso);
     }
 

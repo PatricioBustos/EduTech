@@ -19,28 +19,47 @@ public class UsuarioService {
     }
 
         public Usuario saveUsuario(Usuario usuario) {
+            if (!usuario.getRut().matches("\\d+")){
+                throw new IllegalArgumentException("El RUT solo debe contener numeros!!");
+            }
             if (usuarioRepository.buscarPorRut(usuario.getRut()) != null) {
                 throw new RuntimeException("Usuario ya existente");
             }
-
+            if (usuarioRepository.buscarPorRut(usuario.getRut()) != null) {
+                    throw new RuntimeException("Correo ya existente, use otro porfavor");
+            }
             return usuarioRepository.guardarUsuario(usuario);
         }
-            public Usuario getUsuarioRut(int rut) {
-                return usuarioRepository.buscarPorRut(rut);
+            public Usuario getUsuarioRut(String rut) {
+                Usuario usuario = usuarioRepository.buscarPorRut(rut);
+                if (usuario == null) {
+                    throw new RuntimeException("No se encontró un usuario con el RUT " + rut);
+                }
+                return usuario;
             }
 
             public Usuario getUsuarioCorreo(String correo) {
-                return usuarioRepository.buscarPorCorreo(correo);
+                Usuario usuario = usuarioRepository.buscarPorCorreo(correo);
+                if (usuario == null) {
+                    throw new RuntimeException("No se encontró un usuario con el correo " + correo);
+                }
+                return usuario;
             }
 
-            public Usuario upadteUsuario(Usuario usuario) {
+            public Usuario updateUsuario(Usuario usuario) {
+                if (usuarioRepository.buscarPorRut(usuario.getRut()) == null) {
+                    throw new RuntimeException("No se puede actualizar. Usuario con RUT " + usuario.getRut() + " no existe.");
+                }
                 return usuarioRepository.actualizarUsuario(usuario);
             }
 
-            public String deleteUsuario(int rut) {
+            public String deleteUsuario(String rut) {
+                Usuario usuario = usuarioRepository.buscarPorRut(rut);
+                if (usuario == null) {
+                    throw new RuntimeException("No se puede eliminar. Usuario con RUT " + rut + " no existe.");
+                }
                 usuarioRepository.eliminarUsuario(rut);
-                return "Usuario con rut: "+ rut +"Eliminado";
+                return "Usuario con RUT " + rut + " eliminado correctamente.";
             }
-
         }
 
