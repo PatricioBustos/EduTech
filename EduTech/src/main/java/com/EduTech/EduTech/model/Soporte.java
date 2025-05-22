@@ -8,25 +8,25 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-//@Entity
-//@Table(name="Soporte")
+@Entity
+@Table(name="Soporte")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 
 public class Soporte {
 
-    //@Id
-    //@Column(unique = true, nullable = false)
+    @Id
+    @Column(unique = true, nullable = false)
     private int idTicket;
 
-    //@Column(nullable = false)
+    @Column(nullable = false)
     private Usuario usuario;
 
-    //@Column(nullable = false)
+    @Column(nullable = false)
     private String tipoConsulta;
 
-    //@Column(nullable = false)
+    @Column(nullable = false)
     private String descripcionProblema;
 
 }
