@@ -24,11 +24,16 @@ public class SoporteController {
         return soporteService.saveSoporte(soporte);
     }
 
-    @GetMapping("/idTicket({idTicket}")
-    public Soporte buscarTicket(@PathVariable int idTicket){ return soporteService.getTicketId(idTicket);}
+    // Buscar soporte por id
+    @GetMapping("/{idTicket}")
+    public Soporte buscarTicket(@PathVariable int idTicket) {
+        return soporteService.getTicketId(idTicket);
+    }
 
-    @GetMapping("/idTicket({idTicket}")
-    public Soporte actualiarTicket(@PathVariable int idTicket, @RequestBody Soporte soporte){
+    // Actualizar soporte (usando PUT y path correcto)
+    @PutMapping("/{idTicket}")
+    public Soporte actualizarTicket(@PathVariable int idTicket, @RequestBody Soporte soporte) {
+        soporte.setIdTicket(idTicket);  // Asegurar que el id venga del path
         return soporteService.updateTicket(soporte);
     }
 
