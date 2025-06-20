@@ -12,7 +12,7 @@ public class CursoModelAssembler implements RepresentationModelAssembler<Curso, 
     @Override
     public EntityModel<Curso> toModel(Curso curso) {
         return EntityModel.of(curso,
-                linkTo(methodOn(CursoControllerV2.class).getCursoByCodigo(curso.getIdCurso())).withSelfRel(),
+                linkTo(methodOn(CursoControllerV2.class).getCursoById(curso.getIdCurso())).withSelfRel(),
                 linkTo(methodOn(CursoControllerV2.class).getAllCursos()).withRel("cursos"));
     }
 }

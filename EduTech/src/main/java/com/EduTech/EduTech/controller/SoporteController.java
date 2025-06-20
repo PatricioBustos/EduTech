@@ -1,6 +1,5 @@
 package com.EduTech.EduTech.controller;
 
-import com.EduTech.EduTech.model.Curso;
 import com.EduTech.EduTech.model.Soporte;
 import com.EduTech.EduTech.service.SoporteService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -25,7 +24,7 @@ public class SoporteController {
     @GetMapping
     @Operation(summary = "Obtener todos los Tickets", description = "Obtiene una lista de todas los Tickets")
     public List<Soporte> listaTickets() {
-        return soporteService.getSoportes();
+        return soporteService.findAll();
     }
 
     @PostMapping
@@ -37,7 +36,7 @@ public class SoporteController {
     @GetMapping("/{idTicket}")
     @Operation(summary = "Buscar Tickets", description = "Busca un Ticket mediante su ID")
     public Soporte buscarTicket(@PathVariable int idTicket) {
-        return soporteService.getTicketId(idTicket);
+        return soporteService.findById(idTicket);
     }
 
     @PutMapping("/{idTicket}")
@@ -45,7 +44,7 @@ public class SoporteController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Ticket actualizado correctamente!!",
                     content = @Content(mediaType = "application/json",
-                            schema = @Schema(implementation = Curso.class))),
+                            schema = @Schema(implementation = Soporte.class))),
             @ApiResponse(responseCode = "404", description = "Ticket no encontrado :c")
     })
     public Soporte actualizarTicket(@PathVariable int idTicket, @RequestBody Soporte soporte) {

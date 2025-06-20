@@ -1,6 +1,5 @@
 package com.EduTech.EduTech.controller;
 
-import com.EduTech.EduTech.model.Curso;
 import com.EduTech.EduTech.model.Usuario;
 import com.EduTech.EduTech.service.UsuarioService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -26,7 +25,7 @@ public class UsuarioController {
     @GetMapping
     @Operation(summary = "Obtener todos los Usuarios", description = "Obtiene una lista de todas los Usuarios")
     public List<Usuario> listarUsuarios(){
-        return usuarioService.getUsuarios();
+        return usuarioService.findAll();
     }
 
     @PostMapping
@@ -52,7 +51,7 @@ public class UsuarioController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Usuario actualizado correctamente!!",
                     content = @Content(mediaType = "application/json",
-                            schema = @Schema(implementation = Curso.class))),
+                            schema = @Schema(implementation = Usuario.class))),
             @ApiResponse(responseCode = "404", description = "Usuario no encontrado :c")
     })
     public Usuario actualizarUsuario(@PathVariable String rut, @RequestBody Usuario usuario) {

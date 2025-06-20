@@ -14,7 +14,7 @@ public class SoporteService {
     @Autowired
     private SoporteRepository soporteRepository;
 
-    public List<Soporte> getSoportes() {return soporteRepository.obtenerSoportes();}
+    public List<Soporte> findAll() {return soporteRepository.obtenerSoportes();}
 
     public Soporte saveSoporte(Soporte soporte) {
 
@@ -53,7 +53,7 @@ public class SoporteService {
         return "Id ticket: " + idTicket + " eliminado correctamente.";
     }
 
-    public Soporte getTicketId(int idTicket) {
+    public Soporte findById(int idTicket) {
         Soporte soporte = soporteRepository.buscarPorId(idTicket);
         if(soporte == null){
             throw new RuntimeException("No se encontró el ticket : " + idTicket);

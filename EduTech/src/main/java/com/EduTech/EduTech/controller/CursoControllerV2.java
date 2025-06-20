@@ -35,7 +35,7 @@ public class CursoControllerV2 {
     }
 
     @GetMapping(value = "/idCurso/{idCurso}", produces = MediaTypes.HAL_JSON_VALUE)
-    public EntityModel<Curso> getCursoByCodigo(@PathVariable int idCurso) {
+    public EntityModel<Curso> getCursoById(@PathVariable int idCurso) {
         Curso curso = cursoService.findById(idCurso);
         return assembler.toModel(curso);
     }
@@ -44,14 +44,14 @@ public class CursoControllerV2 {
     public ResponseEntity<EntityModel<Curso>> createCurso(@RequestBody Curso curso) {
         Curso newCurso = cursoService.saveCurso(curso);
         return ResponseEntity
-                .created(linkTo(methodOn(CursoControllerV2.class).getCursoByCodigo(newCurso.getIdCurso())).toUri())
+                .created(linkTo(methodOn(CursoControllerV2.class).getCursoById(newCurso.getIdCurso())).toUri())
                 .body(assembler.toModel(newCurso));
     }
 
     @PutMapping(value = "/idCurso/{idCurso}", produces = MediaTypes.HAL_JSON_VALUE)
     public ResponseEntity<EntityModel<Curso>> updateCurso(@PathVariable int idCurso, @RequestBody Curso curso) {
         curso.setIdCurso(idCurso);
-        Curso updatedCurso = cursoService.saveCurso(curso);
+        Curso updatedCurso = cursoService.getCursoActualizar(curso);
         return ResponseEntity
                 .ok(assembler.toModel(updatedCurso));
     }
