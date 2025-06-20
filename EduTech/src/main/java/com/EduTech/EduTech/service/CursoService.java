@@ -14,7 +14,7 @@ public class CursoService {
     @Autowired
     private CursoRepository cursorepository;
 
-    public List<Curso> getCurso() {return cursorepository.obtenerCursos();
+    public List<Curso> findAll() {return cursorepository.obtenerCursos();
     }
 
     public Curso saveCurso(Curso curso) {
@@ -29,7 +29,7 @@ public class CursoService {
         return cursorepository.guardarCurso(curso);
     }
 
-    public Curso getCursoId(int idCurso) {
+    public Curso findById(int idCurso) {
         return cursorepository.buscarPorId(idCurso);
     }
 

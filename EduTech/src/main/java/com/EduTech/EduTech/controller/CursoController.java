@@ -25,7 +25,7 @@ public class CursoController {
     @GetMapping
     @Operation(summary = "Obtener todos los Cursos", description = "Obtiene una lista de todas los cursos")
     public List<Curso> listarCursos(){
-        return cursoService.getCurso();
+        return cursoService.findAll();
     }
 
     @PostMapping
@@ -37,7 +37,7 @@ public class CursoController {
     @GetMapping("/idCurso/{idCurso}")
     @Operation(summary = "Buscar Cursos por ID", description = "Busca un Curso por su ID de Curso")
     public Curso buscarCursoId(@PathVariable int idCurso){
-        return cursoService.getCursoId (idCurso);
+        return cursoService.findById(idCurso);
     }
 
     @GetMapping("/nombreCurso/{nombreCurso}")
